@@ -102,7 +102,7 @@ app = FastAPI(title="IntelLexa Event Voting API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://d-alfredsam.github.io/"],
+    allow_origins=["https://d-alfredsam.github.io"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -230,6 +230,7 @@ async def reset_votes():
     events_col = db["events"]
     await events_col.update_many({}, {"$set": {"votes": 0}})
     return {"message": "All votes reset successfully"}
+
 
 
 
